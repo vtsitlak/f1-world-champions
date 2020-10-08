@@ -13,8 +13,7 @@ A reusable componeent used to display the seasons champions.
 A state has been used to pass the RaceTable and the champion of the season to the season component.
 This approach used for demonstration reasons since that has the disantvantage that the state data will lost if the age reload.
 Other approaches can be used to avoid this issue like using the localstorge, load the data again from the api etc.
-Specific folders have been used for the interfaces, services and the mock data and mock service used for the testing.
-
+Specific folders have been used for the interfaces and services.
 Setup
 Ensure you have a recent version of Node and NPM installed.
 Install Angular CLI, npm i -g angular-cli@latest
@@ -37,14 +36,6 @@ Run `ng generate component component-name` to generate a new component. You can 
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
 ## Further help
 
