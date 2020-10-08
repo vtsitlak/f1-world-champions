@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RaceService } from '../../@services/race.service';
 import { Race, Driver, RaceTable, DriverPoints } from '../../@interfaces/race';
 import { zip } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-seasons',
@@ -16,6 +17,7 @@ export class SeasonsComponent implements OnInit {
 
   constructor(
     private raceService: RaceService,
+    private snackBar: MatSnackBar,
   ) { }
 
   ngOnInit(): void {
@@ -29,9 +31,13 @@ export class SeasonsComponent implements OnInit {
         const champion: Driver = this.seasonChampion(racetable.Races);
         this.champions.push(champion);
       });
-
       this.loading = false;
-    });
+    },
+      // on fail losding data display the snack bar with the erro message
+      () => {
+        this.loading = false;
+        this.openSnackBar('Failed to load Data', 'reload');
+      });
   }
 
   seasonChampion(races: Race[]): Driver {
@@ -58,6 +64,14 @@ export class SeasonsComponent implements OnInit {
     const maxPointsIndex = driversPoints.map(dp => dp.points).indexOf(maxPoints);
 
     return driversPoints[maxPointsIndex].driver;
+  }
+
+  openSnackBar(message: string, action: string): void {
+    this.snackBar.open(message, action, {
+      duration: 10000,
+    }).onAction().subscribe(() => {
+      window.location.reload();
+    });
   }
 
 }

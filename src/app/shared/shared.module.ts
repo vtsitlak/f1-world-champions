@@ -10,6 +10,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatTableModule } from '@angular/material/table';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 const MATERIAL_MODULES: any[] = [
   MatIconModule,
@@ -20,6 +21,7 @@ const MATERIAL_MODULES: any[] = [
   MatListModule,
   MatDividerModule,
   MatTableModule,
+  MatSnackBarModule,
 ];
 
 @NgModule({
