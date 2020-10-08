@@ -13,6 +13,7 @@ A reusable componeent used to display the seasons champions.
 A state has been used to pass the RaceTable and the champion of the season to the season component.
 This approach used for demonstration reasons since that has the disantvantage that the state data will lost if the age reload.
 Other approaches can be used to avoid this issue like using the localstorge, load the data again from the api etc.
+Specific folders have been used for the interfaces, services and the mock data and mock service used for the testing.
 
 # Libraries
 
