@@ -1,4 +1,4 @@
-<a routerLink="{{season}}">
-  <span class="season" fxFlex="40">{{ season }}</span>
-  <span class="champion" fxFlex>{{ champion }}</span>
+<a routerLink="{{raceTable.season}}" [state]="{ raceTable: raceTable, champion: champion }">
+  <span fxFlex="40">{{ raceTable.season }}</span>
+  <span fxFlex>{{ champion.givenName + ' ' + champion.familyName }}</span>
 </a>

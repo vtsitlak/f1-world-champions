@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { RaceTable, Driver } from '../../@interfaces/race';
 
 @Component({
   selector: 'app-season-line',
@@ -7,7 +8,7 @@ import { Component, Input } from '@angular/core';
 })
 export class SeasonLineComponent {
 
-  @Input() season: string;
-  @Input() champion: string;
+  @Input() raceTable: RaceTable;
+  @Input() champion: Driver;
 
 }
