@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { RaceService } from '../../@services/race.service';
+import { Race, Driver, RaceTable, DriverPoints } from '../../@interfaces/race';
+import { zip } from 'rxjs';
+
 
 @Component({
   selector: 'app-seasons',
@@ -7,9 +11,54 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SeasonsComponent implements OnInit {
 
-  constructor() { }
+  raceTables: RaceTable[] = [];
+  champions: Driver[] = [];
+  loading = true;
+
+  constructor(
+    private raceService: RaceService,
+  ) { }
 
   ngOnInit(): void {
+    const years = Array.from({ length: 11 }, (x, i) => (i + 2005).toString());
+    const raceTables$ = [];
+    years.forEach(year => raceTables$.push(this.raceService.getSeason(year)));
+
+    zip(...raceTables$).subscribe((raceTables: RaceTable[]) => {
+      this.raceTables = raceTables;
+      raceTables.forEach(racetable => {
+        const champion: Driver = this.seasonChampion(racetable.Races);
+        this.champions.push(champion);
+      });
+
+      this.loading = false;
+    });
+  }
+
+  seasonChampion(races: Race[]): Driver {
+
+    const driversPoints: DriverPoints[] = [];
+
+    races.forEach(race => {
+      race.Results.forEach(result => {
+        const driverIdIndex = driversPoints.map(dp => dp.driver.driverId).indexOf(result.Driver.driverId);
+
+        if (driverIdIndex > -1) {
+          driversPoints[driverIdIndex].points += parseInt(result.points, 10);
+        } else {
+          const newDriverPoints: DriverPoints = {
+            driver: result.Driver,
+            points: parseInt(result.points, 10),
+          };
+          driversPoints.push(newDriverPoints);
+        }
+      });
+    });
+
+    const maxPoints = Math.max(...driversPoints.map(dp => dp.points), 0);
+    const maxPointsIndex = driversPoints.map(dp => dp.points).indexOf(maxPoints);
+
+    return driversPoints[maxPointsIndex].driver;
   }
 
 }

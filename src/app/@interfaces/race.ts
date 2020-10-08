@@ -88,3 +88,8 @@ export interface MRData {
 export interface Season {
   MRData: MRData;
 }
+
+export interface DriverPoints {
+  driver: Driver;
+  points: number;
+}
