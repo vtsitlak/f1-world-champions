@@ -6,6 +6,9 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { HttpClientModule } from '@angular/common/http';
+import { MatListModule } from '@angular/material/list';
+import { MatDividerModule } from '@angular/material/divider';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 const MATERIAL_MODULES: any[] = [
   MatIconModule,
@@ -13,6 +16,8 @@ const MATERIAL_MODULES: any[] = [
   MatToolbarModule,
   MatButtonModule,
   MatProgressSpinnerModule,
+  MatListModule,
+  MatDividerModule,
 ];
 
 @NgModule({
@@ -20,10 +25,12 @@ const MATERIAL_MODULES: any[] = [
   imports: [
     CommonModule,
     HttpClientModule,
+    FlexLayoutModule,
     MATERIAL_MODULES,
   ],
   exports: [
     HttpClientModule,
+    FlexLayoutModule,
     MATERIAL_MODULES,
   ],
 })

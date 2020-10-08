@@ -3,7 +3,6 @@ import { RaceService } from '../../@services/race.service';
 import { Race, Driver, RaceTable, DriverPoints } from '../../@interfaces/race';
 import { zip } from 'rxjs';
 
-
 @Component({
   selector: 'app-seasons',
   templateUrl: './seasons.component.html',

@@ -1,2 +1,10 @@
+<h2>Seasons champions</h2>
+<mat-divider></mat-divider>
 <mat-spinner *ngIf="loading" color="accent" diameter="180"></mat-spinner>
-<div *ngIf="!loading"></div>
+<div *ngIf="!loading">
+  <mat-nav-list>
+    <mat-list-item *ngFor="let raceTable of raceTables; let i = index;" >
+      <app-season-line [season]="raceTable.season" [champion]="champions[i].givenName + ' ' + champions[i].familyName" fxFlex></app-season-line>
+    </mat-list-item>
+  </mat-nav-list>
+</div>
