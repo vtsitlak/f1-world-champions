@@ -18,22 +18,25 @@ export class SeasonComponent implements OnInit {
   raceTable: RaceTable;
   champion: Driver;
   dataSource: RaceDispaySource[] = [];
+  displayedColumns = ['round', 'date', 'raceName', 'winner'];
 
 
   ngOnInit(): void {
     this.raceTable = history.state.raceTable;
     this.champion = history.state.champion;
 
-    this.raceTable.Races.forEach(race => {
-      const dataSource: RaceDispaySource = {
-        date: race.date,
-        raceName: race.raceName,
-        round: race.round,
-        winner: this.raceWinner(race.Results),
-      };
+    if (this.raceTable && this.champion) {
+      this.raceTable.Races.forEach(race => {
+        const dataSource: RaceDispaySource = {
+          date: race.date,
+          raceName: race.raceName,
+          round: race.round,
+          winner: this.raceWinner(race.Results),
+        };
 
-      this.dataSource.push(dataSource);
-    });
+        this.dataSource.push(dataSource);
+      });
+    }
   }
 
   raceWinner(results: Result[]): Driver {

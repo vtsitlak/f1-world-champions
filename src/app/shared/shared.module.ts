@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatTableModule } from '@angular/material/table';
 
 const MATERIAL_MODULES: any[] = [
   MatIconModule,
@@ -18,6 +19,7 @@ const MATERIAL_MODULES: any[] = [
   MatProgressSpinnerModule,
   MatListModule,
   MatDividerModule,
+  MatTableModule,
 ];
 
 @NgModule({
