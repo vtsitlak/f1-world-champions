@@ -84,3 +84,7 @@ export interface MRData {
   url: string;
   xmlns: string;
 }
+
+export interface Season {
+  MRData: MRData;
+}
