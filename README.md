@@ -15,6 +15,13 @@ This approach used for demonstration reasons since that has the disantvantage th
 Other approaches can be used to avoid this issue like using the localstorge, load the data again from the api etc.
 Specific folders have been used for the interfaces, services and the mock data and mock service used for the testing.
 
+Setup
+Ensure you have a recent version of Node and NPM installed.
+Install Angular CLI, npm i -g angular-cli@latest
+Install Typescript, npm i -g typescript
+Install Node packages, npm i
+Run local build, ng serve
+
 # Libraries
 
 Angulae Material modules and RxJs libraries has been used
