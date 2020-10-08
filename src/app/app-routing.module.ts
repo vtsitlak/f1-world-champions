@@ -8,6 +8,7 @@ const routes: Routes = [
     pathMatch: 'full',
     redirectTo: '/seasons',
   },
+  // lazy loading Seasons module
   {
     path: 'seasons',
     loadChildren: () => import('./seasons/seasons.module').then(m => m.SeasonsModule),

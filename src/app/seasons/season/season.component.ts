@@ -22,9 +22,11 @@ export class SeasonComponent implements OnInit {
 
 
   ngOnInit(): void {
+    // get the data from state
     this.raceTable = history.state.raceTable;
     this.champion = history.state.champion;
 
+    // prepare the data to be displayed on the table
     if (this.raceTable && this.champion) {
       this.raceTable.Races.forEach(race => {
         const dataSource: RaceDispaySource = {
@@ -40,7 +42,7 @@ export class SeasonComponent implements OnInit {
   }
 
   raceWinner(results: Result[]): Driver {
-
+    // find the wiiner of a race based on the max points
     const maxPoints = Math.max(...results.map(result => parseInt(result.points, 10)), 0);
     const maxPointsIndex = results.map(result => result.points).indexOf(maxPoints.toString());
 
@@ -48,6 +50,7 @@ export class SeasonComponent implements OnInit {
   }
 
   isChampion(winner: Driver): boolean {
+    // returns if the race winner is the seasin champion
     return winner.driverId === this.champion.driverId;
   }
 

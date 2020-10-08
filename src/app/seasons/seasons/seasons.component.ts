@@ -21,6 +21,7 @@ export class SeasonsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    // create an array of observables and use zip, to load the data by once
     const years = Array.from({ length: 11 }, (x, i) => (i + 2005).toString());
     const raceTables$ = [];
     years.forEach(year => raceTables$.push(this.raceService.getSeason(year)));
@@ -41,7 +42,7 @@ export class SeasonsComponent implements OnInit {
   }
 
   seasonChampion(races: Race[]): Driver {
-
+    // calculate the max points od a season for a driver to find the champion
     const driversPoints: DriverPoints[] = [];
 
     races.forEach(race => {
@@ -67,6 +68,7 @@ export class SeasonsComponent implements OnInit {
   }
 
   openSnackBar(message: string, action: string): void {
+    // opens the snackbar. On action reloads the page to try agin to load the data
     this.snackBar.open(message, action, {
       duration: 10000,
     }).onAction().subscribe(() => {
